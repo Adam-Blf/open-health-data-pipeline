@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+
+# Data (raw downloads only, sample data under data/sample/ is committed)
+data/raw/
+reports/*.md
+reports/*.csv
+!reports/.gitkeep
+
+# Secrets and env (defense in depth, see CLAUDE.md security rules)
+.env
+.env.*
+!.env.example
+*secret*
+*.token
+sbp_*
+ghp_*
+github_pat_*
+*.pem
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
