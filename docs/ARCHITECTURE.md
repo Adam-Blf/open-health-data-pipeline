@@ -4,17 +4,28 @@
 
 ```mermaid
 flowchart LR
-    A["Open FINESS CSV\ndata.gouv.fr, Licence Ouverte v2.0"] --> B["Ingestion\ningest.py"]
-    B --> C["Nettoyage & typage\nclean.py"]
-    C --> D["Controles qualite\nquality.py\ncompletude, coherence, outliers"]
-    C --> E["Moteur d'anonymisation\nanonymize/\nk-anonymat + l-diversite"]
-    E --> F["Generalisation\ncode postal -> departement"]
-    F --> G["Suppression des groupes\nsous le seuil k"]
-    G --> H["Rapport de risque\nrisk_report.md"]
-    C --> I["Indicateurs d'activite\nindicators.py"]
-    D --> J["reports/\nquality_report.md"]
-    I --> K["reports/\nactivity_indicators.csv"]
-    H --> J
+    A["Open FINESS CSV<br/>data.gouv.fr, Licence Ouverte v2.0"] --> B["Ingestion<br/>ingest.py"]
+    B --> C["Nettoyage et typage<br/>clean.py"]
+    C --> D["Controles qualite<br/>quality.py<br/>completude, coherence, outliers"]
+    C --> E["Mesure du risque avant<br/>code postal + categorie<br/>k-anonymat, l-diversite"]
+    E --> F["Generalisation<br/>code postal -> departement"]
+    F --> G["Suppression des groupes<br/>sous le seuil k = 5"]
+    G --> H["Mesure apres suppression<br/>min k >= 5, l-diversite sur psychiatrie"]
+    C --> I["Indicateurs d'activite<br/>indicators.py"]
+    D --> Q[("reports/<br/>quality_report.md")]
+    H --> R[("reports/<br/>risk_report.md")]
+    I --> K[("reports/<br/>activity_indicators.csv")]
+
+    classDef input fill:#2563eb,stroke:#1e3a8a,color:#fff
+    classDef process fill:#7c3aed,stroke:#4c1d95,color:#fff
+    classDef store fill:#f59e0b,stroke:#92400e,color:#111
+    classDef ok fill:#16a34a,stroke:#14532d,color:#fff
+    classDef error fill:#dc2626,stroke:#7f1d1d,color:#fff
+    class A input
+    class B,C,D,E,F,I process
+    class Q,R,K store
+    class H ok
+    class G error
 ```
 
 ## Decisions d'architecture
