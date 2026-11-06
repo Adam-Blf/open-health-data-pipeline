@@ -19,3 +19,5 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/).
 - End-to-end pipeline orchestration and CLI (`pipeline.py`).
 - Full pytest suite (TDD on the anonymization engine) and GitHub Actions CI
   (ruff + pytest + pipeline run on a committed real data sample).
+- README version badge, Mermaid architecture with role colours, and a
+  tag-driven release workflow that publishes the wheel and sdist.
